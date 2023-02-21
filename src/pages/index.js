@@ -1,0 +1,6 @@
+export {About} from './About'
+export {Main} from './Main'
+export {NotFound} from './NotFound'
+export {AboutItem} from './AboutItem'
+export {Login} from './Login'
+export {Cart} from './Cart'

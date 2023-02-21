@@ -1,0 +1,10 @@
+.cart-item {
+    padding: 20px;
+    border-top: 1px solid grey;
+  }
+ .cart-checkout {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid grey;
+ }
