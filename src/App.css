@@ -8,6 +8,12 @@
   margin: auto;
 }
 
+.main-container{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
 .not-found {
   display: flex;
   flex-direction: column;
@@ -18,7 +24,7 @@
   font-size: 24px;
 }
 
-.main-container {
+.product-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
