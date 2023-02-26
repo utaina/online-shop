@@ -8,7 +8,7 @@ export const Main = () => {
   const dispatch = useDispatch();
   const { items, loading } = useSelector((state) => state.products);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductPerPage] = useState(20);
+  const [productsPerPage] = useState(20);
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
   };

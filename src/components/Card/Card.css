@@ -1,0 +1,17 @@
+.button-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    border-radius: 10px;
+    border: none;
+    width: 90px;
+    height: 40px;
+    background-color: #F0F0F0;;
+  }
+
+.button-link a {
+    text-decoration: none;
+    color: black;
+}
+  

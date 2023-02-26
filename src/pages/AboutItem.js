@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Button } from "../components/Button/Button";
 import { ItemQuantityButton } from "../components/ItemQuantityButton/ItemQuantityButton";
+import { LoginContext } from "../hoc/LoginProvider";
 import { addToCart, decreaseQuantity } from "../store/slices/cartSlice";
 import { NotFound } from "./NotFound";
 
 export const AboutItem = () => {
+  const {isLoggedIn} = useContext(LoginContext)
   const { id } = useParams();
   const [item, setItem] = useState(null);
   const [error, setError] = useState();
@@ -46,7 +48,7 @@ export const AboutItem = () => {
           <div className="about-main-block">
             <h2>{item?.title}</h2>
             <p>{item?.description}</p>
-            {itemInCart ? (
+            {!isLoggedIn ? <div className="button-link"><Link to="/login"><p>Login</p></Link></div> : itemInCart ? (
               <ItemQuantityButton
                 decQuantity={() => handleDecreaseQuantity(item)}
                 incQuantity={() => handleAddToCart(item)}

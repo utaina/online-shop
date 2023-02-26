@@ -2,8 +2,12 @@ import { Button } from "../Button/Button";
 import { Link } from "react-router-dom";
 import { ItemQuantityButton } from "../ItemQuantityButton/ItemQuantityButton";
 import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { LoginContext } from "../../hoc/LoginProvider";
+import './Card.css'
 
-export const Card = ({ item, onClick, decQuantity }) => {
+export const Card = ({ item, onClick }) => {
+  const {isLoggedIn} = useContext(LoginContext)
   const cart = useSelector((state) => state.cart);
   const itemInCart = cart.cartItems?.find((el) => el.id === item.id);
   return (
@@ -17,7 +21,8 @@ export const Card = ({ item, onClick, decQuantity }) => {
         </Link>
         <p>${item.price}</p>
       </div>
-      {itemInCart ? (
+      {!isLoggedIn ? <div className="button-link"><Link to="/login"><p>Login</p></Link></div> :
+      itemInCart ? (
         <ItemQuantityButton item={itemInCart} />
       ) : (
         <Button onClick={() => onClick(item)} name="Add to cart" />

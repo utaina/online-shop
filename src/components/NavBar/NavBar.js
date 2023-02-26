@@ -1,12 +1,19 @@
+import { useContext } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { LoginContext } from "../../hoc/LoginProvider";
+import { Button } from "../Button/Button";
 import "./NavBar.css";
 
 export const NavBar = () => {
+  const {isLoggedIn, changeLoginStatus} = useContext(LoginContext)
   const cart = useSelector((state) => state.cart);
   const active = {
     color: "#61dafb",
   };
+  const handleLogOut = () => {
+    changeLoginStatus(false)
+  }
   return (
     <header className="App-header">
       <h1>Shop</h1>
@@ -23,7 +30,7 @@ export const NavBar = () => {
         >
           About
         </NavLink>
-        <NavLink to="/login">Login</NavLink>
+        {isLoggedIn ? <Button onClick={handleLogOut} name='Logout'/> : <NavLink to="/login">Login</NavLink>}
       </nav>
       <div className="cart">
         <NavLink to="/cart">
